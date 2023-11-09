@@ -17,11 +17,12 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { mainListItems, secondaryListItems, userManagerListItems } from "./listItems";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
+import BasicMenu from "./BasicMenu";
 
 function Copyright(props) {
     return (
@@ -117,12 +118,17 @@ export default function Dashboard() {
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>
-                        <IconButton color="inherit">
-                            <AccountCircleIcon />
-                        </IconButton>
+                        <BasicMenu />
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open}>
+                <Drawer
+                    variant="permanent"
+                    open={open}
+                    PaperProps={{
+                        sx: {
+                            backgroundColor: "rgba(61, 121, 250, 0.8)"
+                        },
+                    }}>
                     <Toolbar
                         sx={{
                             display: "flex",
@@ -130,7 +136,7 @@ export default function Dashboard() {
                             justifyContent: "flex-end",
                             px: [1],
                         }}>
-                         <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+                        <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
                             Ecommerce App
                         </Typography>
                         <IconButton onClick={toggleDrawer}>
